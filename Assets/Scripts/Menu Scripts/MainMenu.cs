@@ -41,6 +41,6 @@ public class MainMenu : MonoBehaviour
 
     public void ToUpgrades()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 }

@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
 
     public void UpgradeBaseSpeed()
     {
-        BaseSpeed += 0.2f;
+        BaseSpeed += 0.1f;
         PlayerPrefs.SetFloat(nameof(BaseSpeed), MaxSpeed);
     }
 
@@ -121,5 +121,65 @@ public class PlayerStats : MonoBehaviour
         Coins = PlayerPrefs.GetInt(nameof(Coins), 0);
         BaseCoinValue = PlayerPrefs.GetFloat(nameof(BaseCoinValue), 1);
         CoinMultiplyer = PlayerPrefs.GetFloat(nameof(CoinMultiplyer), 1);
+
+        NewMethod();
+    }
+
+    private void NewMethod()
+    {
+        var extraJumpsLevel = PlayerPrefs.GetInt("EJ", 0);
+        var jumpForceLevel = PlayerPrefs.GetInt("JF", 0);
+        var accelerationSpeedLevel = PlayerPrefs.GetInt("AS", 0);
+        var decelerationSpeedLevel = PlayerPrefs.GetInt("DS", 0);
+        var horizontalSpeedLevel = PlayerPrefs.GetInt("HS", 0);
+        var maxSpeedLevel = PlayerPrefs.GetInt("MS", 0);
+        var baseSpeedLevel = PlayerPrefs.GetInt("BS", 0);
+        var baseCoinValueLevel = PlayerPrefs.GetInt("BCV", 0);
+        var coinMultiplyerLevel = PlayerPrefs.GetInt("CM", 0);
+
+        for (int i = 0; i < extraJumpsLevel; i++)
+        {
+            UpgradeExtraJumps();
+        }
+
+        for (int i = 0; i < jumpForceLevel; i++)
+        {
+            UpgradeJumpForce();
+        }
+
+        for (int i = 0; i < accelerationSpeedLevel; i++)
+        {
+            UpgradeAccelerationSpeed();
+        }
+
+        for (int i = 0; i < decelerationSpeedLevel; i++)
+        {
+            UpgradeDecelerationSpeed();
+        }
+
+        for (int i = 0; i < horizontalSpeedLevel; i++)
+        {
+            UpgradeHorizontalSpeed();
+        }
+
+        for (int i = 0; i < maxSpeedLevel; i++)
+        {
+            UpgradeMaxSpeed();
+        }
+
+        for (int i = 0; i < baseSpeedLevel; i++)
+        {
+            UpgradeBaseSpeed();
+        }
+
+        for (int i = 0; i < baseCoinValueLevel; i++)
+        {
+            UpgradeBaseCoinValue();
+        }
+
+        for (int i = 0; i < coinMultiplyerLevel; i++)
+        {
+            UpgradeCoinMultiplyer();
+        }
     }
 }

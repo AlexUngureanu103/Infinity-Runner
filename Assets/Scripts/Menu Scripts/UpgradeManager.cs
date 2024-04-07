@@ -23,12 +23,13 @@ public class UpgradeManager : MonoBehaviour
     }
     void Start()
     {
-        coins = PlayerPrefs.GetInt("Coins", 0);
+        coins = PlayerPrefs.GetInt("Coins", 10000);
         _ScoreCoints.text = "Coins: " + coins.ToString();
     }
 
     void Update()
     {
-        
+        coins = PlayerPrefs.GetInt("Coins", 10000);
+        _ScoreCoints.text = "Coins: " + coins.ToString();
     }
 }
