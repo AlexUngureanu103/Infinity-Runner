@@ -11,7 +11,7 @@ public class UpgradeItem : MonoBehaviour
     private int level;
     private int maxLevel = 8;
 
-    private int coins;
+    private float coins;
 
     [SerializeField]
     private TextMeshPro _Name;
@@ -24,7 +24,7 @@ public class UpgradeItem : MonoBehaviour
 
     void Start()
     {
-        coins = PlayerPrefs.GetInt("Coins", 10000);
+        coins = PlayerPrefs.GetFloat("Coins", 10000);
 
 
 
@@ -62,13 +62,13 @@ public class UpgradeItem : MonoBehaviour
 #if UNITY_EDITOR
         Debug.Log("Adding 10000 coins");
         coins += 10000;
-        PlayerPrefs.SetInt("Coins", 0);
+        PlayerPrefs.SetFloat("Coins", 0);
 #endif
 
         if (coins >= _BaseCost)
         {
             coins -= _BaseCost;
-            PlayerPrefs.SetInt("Coins", coins);
+            PlayerPrefs.SetFloat("Coins", coins);
             level++;
             PlayerPrefs.SetInt(_UpgradeName, level + 1);
             actualCost *= 2;

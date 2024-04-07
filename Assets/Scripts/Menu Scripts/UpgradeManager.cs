@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    private int coins;
+    private float coins;
 
     public static UpgradeManager _Instance;
 
@@ -23,13 +23,13 @@ public class UpgradeManager : MonoBehaviour
     }
     void Start()
     {
-        coins = PlayerPrefs.GetInt("Coins", 10000);
+        coins = PlayerPrefs.GetFloat("Coins", 10000);
         _ScoreCoints.text = "Coins: " + coins.ToString();
     }
 
     void Update()
     {
-        coins = PlayerPrefs.GetInt("Coins", 10000);
+        coins = PlayerPrefs.GetFloat("Coins", 10000);
         _ScoreCoints.text = "Coins: " + coins.ToString();
     }
 }

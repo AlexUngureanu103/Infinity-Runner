@@ -7,9 +7,12 @@ public class Coin : MonoBehaviour
 
     [SerializeField]
     private float _rotationSpeed = 90.0f;
+
+    private float BaseCoinValue;
+
     void Start()
     {
-
+        BaseCoinValue = PlayerPrefs.GetFloat(nameof(BaseCoinValue), 1);
     }
 
     void Update()
@@ -22,9 +25,9 @@ public class Coin : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);
-            GameManager._Instance.AddCoins(_coinValue);
+            GameManager._Instance.AddCoins(BaseCoinValue);
         }
-        else if(other.CompareTag("Obstacle"))
+        else if (other.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }

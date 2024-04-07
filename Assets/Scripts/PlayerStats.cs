@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     public float MaxSpeed;
     public float BaseSpeed;
 
-    public int Coins;
+    public float Coins;
     public float BaseCoinValue;
     public float CoinMultiplyer;
 
@@ -101,7 +101,7 @@ public class PlayerStats : MonoBehaviour
         PlayerPrefs.SetFloat(nameof(MaxSpeed), MaxSpeed);
         PlayerPrefs.SetFloat(nameof(BaseSpeed), BaseSpeed);
 
-        PlayerPrefs.SetInt(nameof(Coins), Coins);
+        PlayerPrefs.SetFloat(nameof(Coins), Coins);
         PlayerPrefs.SetFloat(nameof(BaseCoinValue), BaseCoinValue);
         PlayerPrefs.SetFloat(nameof(CoinMultiplyer), CoinMultiplyer);
     }
@@ -118,7 +118,7 @@ public class PlayerStats : MonoBehaviour
         MaxSpeed = PlayerPrefs.GetFloat(nameof(MaxSpeed), 10);
         BaseSpeed = PlayerPrefs.GetFloat(nameof(BaseSpeed), 5);
 
-        Coins = PlayerPrefs.GetInt(nameof(Coins), 0);
+        Coins = PlayerPrefs.GetFloat(nameof(Coins), 0);
         BaseCoinValue = PlayerPrefs.GetFloat(nameof(BaseCoinValue), 1);
         CoinMultiplyer = PlayerPrefs.GetFloat(nameof(CoinMultiplyer), 1);
 
