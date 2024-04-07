@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 190224784}
   - component: {fileID: 190224783}
   - component: {fileID: 190224782}
+  - component: {fileID: 190224786}
   m_Layer: 5
   m_Name: Updades
   m_TagString: Untagged
@@ -470,6 +471,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &190224786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190224781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5434ac9544c531441b7bab7f4c5a95e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _BackButton: {fileID: 1367269124}
 --- !u!1 &219443975
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,7 +541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Exit
+  m_text: 'Back
 
 '
   m_isRightToLeft: 0
