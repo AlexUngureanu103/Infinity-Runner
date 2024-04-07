@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+           UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        }
     }
 }
