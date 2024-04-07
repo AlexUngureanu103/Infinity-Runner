@@ -13,7 +13,10 @@ public class GroundTile : MonoBehaviour
     void Start()
     {
         _GroundSpawner = GameObject.FindObjectOfType<GroundSpawner>();
-        SpawnObstacle();
+        if (transform.position.z >= 20)
+        {
+            SpawnObstacle();
+        }
         SpawnCoin();
     }
 
@@ -30,8 +33,13 @@ public class GroundTile : MonoBehaviour
 
     public void SpawnObstacle()
     {
-        int obstacleSpawnIndex = Random.Range(2, 5);
+        int obstacleSpawnIndex = Random.Range(0, 3);
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
+
+        if (!GetComponent<Collider>().bounds.Contains(spawnPoint.position))
+        {
+            return;
+        }
 
         Instantiate(_ObstaclePrefab, spawnPoint.position, Quaternion.identity, transform);
     }

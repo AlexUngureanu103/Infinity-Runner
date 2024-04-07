@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,12 +25,15 @@ public class GameManager : MonoBehaviour
     public void AddCoins(int value = 1)
     {
         coins += value;
+        PlayerPrefs.SetInt("Coins", coins);
+
         _ScoreCoints.text = "Score: " + coins.ToString();
     }
 
     void Start()
     {
-
+        coins = PlayerPrefs.GetInt("Coins", 0);
+        _ScoreCoints.text = "Score: " + coins.ToString();
     }
 
     void Update()
