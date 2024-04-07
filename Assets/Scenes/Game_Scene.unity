@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 645149649}
   - component: {fileID: 645149648}
   - component: {fileID: 645149647}
+  - component: {fileID: 645149651}
   - component: {fileID: 645149646}
   - component: {fileID: 645149645}
   m_Layer: 0
@@ -183,12 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d716342c5d4cacc4ea32bbdf23106366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ForwardSpeedMultiplier: 1
-  _InitialForwardSpeed: 5
-  _ForwardSpeed: 5
-  _JumpForce: 5
   _Rb: {fileID: 645149645}
-  _HorizontalMultiplier: 1.25
 --- !u!136 &645149647
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -277,6 +273,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &645149651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645149644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1a54523d3ace1343814476a5cfc0f4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthPoints: 0
+  ExtraJumps: 0
+  JumpForce: 0
+  AccelerationSpeedMultiplyer: 0
+  DecelerationSpeedMultiplyer: 0
+  HorizontalSpeedMultiplyer: 0
+  MaxSpeed: 0
+  BaseSpeed: 0
+  Coins: 0
+  BaseCoinValue: 0
+  CoinMultiplyer: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

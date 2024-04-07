@@ -4,33 +4,21 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField]
-    private float _ForwardSpeedMultiplier = 1.0f;
-    [SerializeField]
-    private float _InitialForwardSpeed = 5.0f;
-    [SerializeField]
-    private float _ForwardSpeed = 5.0f;
-
-
-    [SerializeField]
-    private float _JumpForce = 10.0f;
-
+    private PlayerStats playerStats;
     [SerializeField]
     private Rigidbody _Rb;
 
-    [SerializeField]
-    private float _HorizontalMultiplier = 2.0f;
+    private float _CurrentForwardSpeed = 5.0f;
+    private float targetForwardSpeed;
+    private float minForwardSpeed = 2.5f;
+
     private float _HorizontalInput;
 
+
     private bool _isAlive = true;
-
     private bool isJumping;
-    private int extraJumps = 1;
-    private int extraJumpsValue;
+    private int extraJumps;
 
-    private float targetForwardSpeed;
-    private float maxForwardSpeed = 10.0f;
-    private float minForwardSpeed = 2.5f;
 
     private void FixedUpdate()
     {
@@ -39,17 +27,18 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         
-        _ForwardSpeed = Math.Min(Mathf.Lerp(_ForwardSpeed, targetForwardSpeed, Time.deltaTime), maxForwardSpeed);
-        _ForwardSpeed = Math.Max(_ForwardSpeed, minForwardSpeed);
-        Vector3 forwardMove = transform.forward * _ForwardSpeed * Time.deltaTime;
-        Vector3 horizontalMove = transform.right * _HorizontalInput * _ForwardSpeed * Time.deltaTime;
+        _CurrentForwardSpeed = Math.Min(Mathf.Lerp(_CurrentForwardSpeed, targetForwardSpeed, Time.deltaTime), playerStats.MaxSpeed);
+        _CurrentForwardSpeed = Math.Max(_CurrentForwardSpeed, minForwardSpeed);
+        Vector3 forwardMove = transform.forward * _CurrentForwardSpeed * Time.deltaTime;
+        Vector3 horizontalMove = transform.right * _HorizontalInput * _CurrentForwardSpeed * Time.deltaTime;
 
         _Rb.MovePosition(_Rb.position + forwardMove + horizontalMove);
     }
 
     void Start()
     {
-        extraJumpsValue = extraJumps;
+        playerStats = FindObjectOfType<PlayerStats>();
+        extraJumps = playerStats.ExtraJumps;
     }
 
     void Update()
@@ -58,31 +47,28 @@ public class PlayerMovement : MonoBehaviour
         float _VerticalInput = Input.GetAxis("Vertical");
 
         // Add speed multiplier for forward and backward movement
-        _ForwardSpeedMultiplier = 1.0f;
         if (_VerticalInput > 0)
         {
-            _ForwardSpeedMultiplier = 1.5f;
-            targetForwardSpeed = _ForwardSpeed * _ForwardSpeedMultiplier;
+            targetForwardSpeed = _CurrentForwardSpeed * playerStats.AccelerationSpeedMultiplyer;
         }
         else if (_VerticalInput < 0)
         {
-            _ForwardSpeedMultiplier = 0.5f;
-            targetForwardSpeed = _ForwardSpeed * _ForwardSpeedMultiplier;
+            targetForwardSpeed = _CurrentForwardSpeed / playerStats.DecelerationSpeedMultiplyer;
         }
         else
         {
-            targetForwardSpeed = _InitialForwardSpeed;
+            targetForwardSpeed = playerStats.BaseSpeed;
         }
 
         if (isJumping && extraJumps > 0 && Input.GetKeyDown(KeyCode.Space))
         {
-            _Rb.velocity = Vector2.up * _JumpForce;
+            _Rb.velocity = Vector2.up * playerStats.JumpForce;
             extraJumps--;
         }
         else if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             isJumping = true;
-            _Rb.velocity = Vector2.up * _JumpForce;
+            _Rb.velocity = Vector2.up * playerStats.JumpForce;
         }
 
         if (transform.position.y < -5)
@@ -96,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
-            extraJumps = extraJumpsValue;
+            extraJumps = playerStats.ExtraJumps;
         }
     }
 
