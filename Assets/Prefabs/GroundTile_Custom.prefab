@@ -311,6 +311,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeftPlane
       objectReference: {fileID: 0}
+    - target: {fileID: 8394028558286074938, guid: 25783e9c5585c6147b2d08890af0c8ae, type: 3}
+      propertyPath: _RedCoinPrefab
+      value: 
+      objectReference: {fileID: 4869486365298573707, guid: 37636125e1236d342a05308b4a48c282, type: 3}
+    - target: {fileID: 8394028558286074938, guid: 25783e9c5585c6147b2d08890af0c8ae, type: 3}
+      propertyPath: _BlueCoinPrefab
+      value: 
+      objectReference: {fileID: 205932093382334082, guid: cd8e9e41f985afb4a88a4c20798727bc, type: 3}
     - target: {fileID: 9083590681071790217, guid: 25783e9c5585c6147b2d08890af0c8ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.3333333

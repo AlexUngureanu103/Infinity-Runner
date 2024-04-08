@@ -75,6 +75,9 @@ MonoBehaviour:
   _TallObstaclePrefab: {fileID: 3280457718575129119, guid: aa41c5320da97f245a93dcf0ff404794, type: 3}
   _TallObstacleChance: 0.2
   _CoinPrefab: {fileID: 6484771689137035851, guid: a3c912d09d8331b4aa6a35adb3231f6e, type: 3}
+  _GreenCoinPrefab: {fileID: 6225546451052130831, guid: 3bfd9d4893aedf043a7d9e42fbd3bfce, type: 3}
+  _BlueCoinPrefab: {fileID: 205932093382334082, guid: cd8e9e41f985afb4a88a4c20798727bc, type: 3}
+  _RedCoinPrefab: {fileID: 4869486365298573707, guid: 37636125e1236d342a05308b4a48c282, type: 3}
 --- !u!1 &877398419405101471
 GameObject:
   m_ObjectHideFlags: 0
