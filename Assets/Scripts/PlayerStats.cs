@@ -31,25 +31,25 @@ public class PlayerStats : MonoBehaviour
 
 	public void UpgradeJumpForce()
 	{
-		JumpForce += 0.5f;
+		JumpForce += 0.25f;
 		PlayerPrefs.SetFloat(nameof(JumpForce), JumpForce);
 	}
 
 	public void UpgradeAccelerationSpeed()
 	{
-		AccelerationSpeedMultiplyer += 0.1f;
+		AccelerationSpeedMultiplyer += 0.05f;
 		PlayerPrefs.SetFloat(nameof(AccelerationSpeedMultiplyer), AccelerationSpeedMultiplyer);
 	}
 
 	public void UpgradeDecelerationSpeed()
 	{
-		DecelerationSpeedMultiplyer += 0.1f;
+		DecelerationSpeedMultiplyer += 0.05f;
 		PlayerPrefs.SetFloat(nameof(DecelerationSpeedMultiplyer), DecelerationSpeedMultiplyer);
 	}
 
 	public void UpgradeHorizontalSpeed()
 	{
-		HorizontalSpeedMultiplyer += 0.1f;
+		HorizontalSpeedMultiplyer += 0.01f;
 		PlayerPrefs.SetFloat(nameof(HorizontalSpeedMultiplyer), HorizontalSpeedMultiplyer);
 	}
 
@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
 
 	public void UpgradeBaseSpeed()
 	{
-		BaseSpeed += 0.1f;
+		BaseSpeed += 0.05f;
 		PlayerPrefs.SetFloat(nameof(BaseSpeed), MaxSpeed);
 	}
 
@@ -73,7 +73,7 @@ public class PlayerStats : MonoBehaviour
 
 	public void UpgradeCoinMultiplyer()
 	{
-		CoinMultiplyer += 0.1f;
+		CoinMultiplyer += 0.25f;
 		PlayerPrefs.SetFloat(nameof(CoinMultiplyer), CoinMultiplyer);
 	}
 
@@ -83,7 +83,7 @@ public class PlayerStats : MonoBehaviour
 	{
 		HealthPoints = 1;
 		ExtraJumps = 0;
-		JumpForce = 12;
+		JumpForce = 6;
 		AccelerationSpeedMultiplyer = 1.5f;
 		DecelerationSpeedMultiplyer = 1.5f;
 		MaxSpeed = 10;
@@ -110,7 +110,7 @@ public class PlayerStats : MonoBehaviour
 		HealthPoints = PlayerPrefs.GetInt(nameof(HealthPoints), 1);
 
 		ExtraJumps = PlayerPrefs.GetInt(nameof(ExtraJumps), 0);
-		JumpForce = PlayerPrefs.GetFloat(nameof(JumpForce), 12);
+		JumpForce = PlayerPrefs.GetFloat(nameof(JumpForce), 6);
 
 		AccelerationSpeedMultiplyer = PlayerPrefs.GetFloat(nameof(AccelerationSpeedMultiplyer), 1.5f);
 		DecelerationSpeedMultiplyer = PlayerPrefs.GetFloat(nameof(DecelerationSpeedMultiplyer), 1.5f);

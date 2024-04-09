@@ -36,7 +36,7 @@ public class UpgradeMenu : MonoBehaviour
 
 		var HealthPoints = 1;
 		var ExtraJumps = 0;
-		var JumpForce = 12;
+		var JumpForce = 5;
 		var AccelerationSpeedMultiplyer = 1.5f;
 		var DecelerationSpeedMultiplyer = 1.5f;
 		var MaxSpeed = 10;

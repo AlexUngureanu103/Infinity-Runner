@@ -8,6 +8,8 @@ public class GroundSpawner : MonoBehaviour
     private GameObject _GroundTileLeft;
     [SerializeField]
     private GameObject _GroundTileRight;
+    [SerializeField]
+    private Rigidbody Player;
 
     enum SpawnPosition
     {
@@ -24,6 +26,10 @@ public class GroundSpawner : MonoBehaviour
 
     public void SpawnTile()
     {
+        if(_NextSpawnPoint.z - Player.transform.position.z > 200)
+        {
+            return;
+        }   
         // Generate a random number between 0 and 2
         int randomNumber = Random.Range(0, 3);
 
