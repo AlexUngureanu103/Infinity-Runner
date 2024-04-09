@@ -747,12 +747,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Rb: {fileID: 1103170047}
-  JumpAnimation: {fileID: 9100000, guid: b4abef65929efc64eae2fad8c8debd34, type: 2}
-  RunAnimation: {fileID: 9100000, guid: b493467361c372f4fb1bfe063d2fea54, type: 2}
-  IdleAnimation: {fileID: 9100000, guid: fad8dee88e0ba214db7a97335e17c099, type: 2}
-  FallAnimation: {fileID: 9100000, guid: d4408965fcd66854a830bca10b57e9c5, type: 2}
-  WalkAnimation: {fileID: 9100000, guid: 6245007fb9eb9d04c92cdb091fb72a87, type: 2}
-  SprintAnimation: {fileID: 9100000, guid: 9f86f92bacb99474a9c8385908af1d7d, type: 2}
+  _PlayerCollider: {fileID: 1103170049}
+  _JumpAnimation: {fileID: 9100000, guid: b4abef65929efc64eae2fad8c8debd34, type: 2}
+  _RunAnimation: {fileID: 9100000, guid: b493467361c372f4fb1bfe063d2fea54, type: 2}
+  _IdleAnimation: {fileID: 9100000, guid: fad8dee88e0ba214db7a97335e17c099, type: 2}
+  _FallAnimation: {fileID: 9100000, guid: d4408965fcd66854a830bca10b57e9c5, type: 2}
+  _WalkAnimation: {fileID: 9100000, guid: 6245007fb9eb9d04c92cdb091fb72a87, type: 2}
+  _SprintAnimation: {fileID: 9100000, guid: 9f86f92bacb99474a9c8385908af1d7d, type: 2}
 --- !u!136 &1103170049
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -775,7 +776,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2.7358236
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8679118, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &1456973630
 GameObject:
   m_ObjectHideFlags: 0
