@@ -40,6 +40,9 @@ public class Anim_Movement : MonoBehaviour
 
     private bool isDisabledTrigger = false;
 
+    private bool canRotate = true;
+    private float currentYRotation = 0;
+
     private void FixedUpdate()
     {
         if (!_isAlive)
@@ -67,12 +70,12 @@ public class Anim_Movement : MonoBehaviour
 
     void Update()
     {
-        if(!_isAlive)
+        if (!_isAlive)
         {
             return;
         }
 
-        if(isJumping)
+        if (isJumping)
         {
             _PlayerCollider.contactOffset = 0.5f;
         }
@@ -83,6 +86,21 @@ public class Anim_Movement : MonoBehaviour
 
         _HorizontalInput = Input.GetAxis("Horizontal");
         float _VerticalInput = Input.GetAxis("Vertical");
+        if (canRotate)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                currentYRotation -= 90;
+                canRotate = false;
+                Invoke("ChangePlayerRotation", 1f);
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                canRotate = false;
+                currentYRotation += 90;
+                Invoke("ChangePlayerRotation", 1f);
+            }
+        }
 
         if (_VerticalInput > 0)
         {
@@ -183,6 +201,16 @@ public class Anim_Movement : MonoBehaviour
         _isAlive = false;
 
         Invoke("Restart", 2);
+    }
+
+    void ChangePlayerRotation()
+    {
+        if (currentYRotation == 360 || currentYRotation == -360)
+        {
+            currentYRotation = 0;
+        }
+        transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
+        canRotate = true;
     }
 
     void Restart()
