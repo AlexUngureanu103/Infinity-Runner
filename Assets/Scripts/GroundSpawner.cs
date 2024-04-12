@@ -67,15 +67,19 @@ public class GroundSpawner : MonoBehaviour
         tJunctionTile = Instantiate(_TJunctionTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation, 0));
         nextSpawnPoint = tJunctionTile.transform.GetChild(3).transform.position;
 
-        var tempLeft = Instantiate(_GroundTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation - 90, 0));
+        leftSpawnPoint = tJunctionTile.transform.GetChild(7).transform.position;
+        rightSpawnPoint = tJunctionTile.transform.GetChild(8).transform.position;
+
+        //Spawn Full Tiles
+        var tempLeft = Instantiate(_GroundTile, leftSpawnPoint, Quaternion.Euler(0, currentYRotation - 90, 0));
         leftSpawnPoint = tempLeft.transform.GetChild(3).transform.position;
         leftTiles.Add(tempLeft);
 
-        var tempRight = Instantiate(_GroundTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation + 90, 0));
+        var tempRight = Instantiate(_GroundTile, rightSpawnPoint, Quaternion.Euler(0, currentYRotation + 90, 0));
         rightSpawnPoint = tempRight.transform.GetChild(3).transform.position;
         rightTiles.Add(tempRight);
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 9; i++)
         {
             //tempLeft = Instantiate(_GroundTile, leftSpawnPoint, Quaternion.Euler(0, currentYRotation - 90, 0));
             tempLeft = SpawnRandomTile(currentYRotation - 90, leftSpawnPoint);
