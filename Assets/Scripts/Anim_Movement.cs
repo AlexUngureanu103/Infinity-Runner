@@ -40,12 +40,15 @@ public class Anim_Movement : MonoBehaviour
 
 	private bool isDisabledTrigger = false;
 
-	private void FixedUpdate()
-	{
-		if (!_isAlive)
-		{
-			return;
-		}
+    private bool canRotate = true;
+    private float currentYRotation = 0;
+
+    private void FixedUpdate()
+    {
+        if (!_isAlive)
+        {
+            return;
+        }
 
 		_CurrentForwardSpeed = Math.Min(Mathf.Lerp(_CurrentForwardSpeed, targetForwardSpeed, Time.deltaTime), playerStats.MaxSpeed);
 		_CurrentForwardSpeed = Math.Max(_CurrentForwardSpeed, minForwardSpeed);
@@ -65,24 +68,39 @@ public class Anim_Movement : MonoBehaviour
 		extraJumps = playerStats.ExtraJumps;
 	}
 
-	void Update()
-	{
-		if (!_isAlive)
-		{
-			return;
-		}
+    void Update()
+    {
+        if (!_isAlive)
+        {
+            return;
+        }
 
-		if (isJumping)
-		{
-			_PlayerCollider.contactOffset = 0.5f;
-		}
-		else
-		{
-			_PlayerCollider.contactOffset = 0.01f;
-		}
+        if (isJumping)
+        {
+            _PlayerCollider.contactOffset = 0.5f;
+        }
+        else
+        {
+            _PlayerCollider.contactOffset = 0.01f;
+        }
 
-		_HorizontalInput = Input.GetAxis("Horizontal");
-		float _VerticalInput = Input.GetAxis("Vertical");
+        _HorizontalInput = Input.GetAxis("Horizontal");
+        float _VerticalInput = Input.GetAxis("Vertical");
+        if (canRotate)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                currentYRotation -= 90;
+                canRotate = false;
+                Invoke("ChangePlayerRotation", 1f);
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                canRotate = false;
+                currentYRotation += 90;
+                Invoke("ChangePlayerRotation", 1f);
+            }
+        }
 
 		if (_VerticalInput > 0)
 		{
@@ -189,8 +207,18 @@ public class Anim_Movement : MonoBehaviour
 		Invoke("Restart", 2);
 	}
 
-	void Restart()
-	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
+    void ChangePlayerRotation()
+    {
+        if (currentYRotation == 360 || currentYRotation == -360)
+        {
+            currentYRotation = 0;
+        }
+        transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
+        canRotate = true;
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }

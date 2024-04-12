@@ -20,61 +20,61 @@ public class PlayerStats : MonoBehaviour
 	public void UpgradeHealthPoints()
 	{
 		HealthPoints += 1;
-		PlayerPrefs.SetInt(nameof(HealthPoints), HealthPoints);
+		//PlayerPrefs.SetInt(nameof(HealthPoints), HealthPoints);
 	}
 
 	public void UpgradeExtraJumps()
 	{
 		ExtraJumps++;
-		PlayerPrefs.SetInt(nameof(ExtraJumps), ExtraJumps);
+		//PlayerPrefs.SetInt(nameof(ExtraJumps), ExtraJumps);
 	}
 
 	public void UpgradeJumpForce()
 	{
 		JumpForce += 0.25f;
-		PlayerPrefs.SetFloat(nameof(JumpForce), JumpForce);
+		//PlayerPrefs.SetFloat(nameof(JumpForce), JumpForce);
 	}
 
 	public void UpgradeAccelerationSpeed()
 	{
 		AccelerationSpeedMultiplyer += 0.05f;
-		PlayerPrefs.SetFloat(nameof(AccelerationSpeedMultiplyer), AccelerationSpeedMultiplyer);
+		//PlayerPrefs.SetFloat(nameof(AccelerationSpeedMultiplyer), AccelerationSpeedMultiplyer);
 	}
 
 	public void UpgradeDecelerationSpeed()
 	{
 		DecelerationSpeedMultiplyer += 0.05f;
-		PlayerPrefs.SetFloat(nameof(DecelerationSpeedMultiplyer), DecelerationSpeedMultiplyer);
+		//PlayerPrefs.SetFloat(nameof(DecelerationSpeedMultiplyer), DecelerationSpeedMultiplyer);
 	}
 
 	public void UpgradeHorizontalSpeed()
 	{
 		HorizontalSpeedMultiplyer += 0.01f;
-		PlayerPrefs.SetFloat(nameof(HorizontalSpeedMultiplyer), HorizontalSpeedMultiplyer);
+		//PlayerPrefs.SetFloat(nameof(HorizontalSpeedMultiplyer), HorizontalSpeedMultiplyer);
 	}
 
 	public void UpgradeMaxSpeed()
 	{
 		MaxSpeed += 0.2f;
-		PlayerPrefs.SetFloat(nameof(MaxSpeed), MaxSpeed);
+		//PlayerPrefs.SetFloat(nameof(MaxSpeed), MaxSpeed);
 	}
 
 	public void UpgradeBaseSpeed()
 	{
 		BaseSpeed += 0.05f;
-		PlayerPrefs.SetFloat(nameof(BaseSpeed), MaxSpeed);
+		//PlayerPrefs.SetFloat(nameof(BaseSpeed), MaxSpeed);
 	}
 
 	public void UpgradeBaseCoinValue()
 	{
 		BaseCoinValue += 1f;
-		PlayerPrefs.SetFloat(nameof(BaseCoinValue), BaseCoinValue);
+		//PlayerPrefs.SetFloat(nameof(BaseCoinValue), BaseCoinValue);
 	}
 
 	public void UpgradeCoinMultiplyer()
 	{
 		CoinMultiplyer += 0.25f;
-		PlayerPrefs.SetFloat(nameof(CoinMultiplyer), CoinMultiplyer);
+		//PlayerPrefs.SetFloat(nameof(CoinMultiplyer), CoinMultiplyer);
 	}
 
 

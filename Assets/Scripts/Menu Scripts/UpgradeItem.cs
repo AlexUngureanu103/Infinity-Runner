@@ -6,9 +6,15 @@ public class UpgradeItem : MonoBehaviour
 {
     [SerializeField]
     private int _BaseCost = 100;
+    [SerializeField]
+    private string _UpgradeName;
+    [SerializeField]
+    private string _UpgradeDisplayName;
+
     private double actualCost;
 
     private int level;
+    [SerializeField]
     private int maxLevel = 8;
 
     private float coins;
@@ -19,8 +25,6 @@ public class UpgradeItem : MonoBehaviour
     [SerializeField]
     private Button _UpgradeButton;
 
-    //[SerializeField]
-    private string _UpgradeName;
 
     void Start()
     {
@@ -34,7 +38,7 @@ public class UpgradeItem : MonoBehaviour
         level = PlayerPrefs.GetInt(_UpgradeName, 0);
         actualCost = _BaseCost * Mathf.Pow(2, level);
 
-        _Name.text = actualCost.ToString() + ' ' + _UpgradeName;
+        _Name.text = _UpgradeDisplayName + '\n' + "Cost: " + actualCost.ToString();
         _UpgradeButton.onClick.AddListener(Upgrade);
 
         UpdateUpgrade();
@@ -42,7 +46,7 @@ public class UpgradeItem : MonoBehaviour
 
     private void UpdateUpgrade()
     {
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < maxLevel; i++)
         {
             var image = transform.GetChild(i + 1).GetComponent<Image>();
             if (i < level)
@@ -72,7 +76,7 @@ public class UpgradeItem : MonoBehaviour
             level++;
             PlayerPrefs.SetInt(_UpgradeName, level + 1);
             actualCost *= 2;
-            _Name.text = actualCost.ToString() + ' ' + _UpgradeName;
+            _Name.text = _UpgradeDisplayName + '\n' + "Cost: " + actualCost.ToString();
 
             UpdateUpgrade();
         }
@@ -87,7 +91,7 @@ public class UpgradeItem : MonoBehaviour
         if (level >= maxLevel)
         {
             _UpgradeButton.interactable = false;
-            _Name.text = _UpgradeName;
+            _Name.text = _UpgradeDisplayName;
         }
         else
             _UpgradeButton.interactable = (coins >= actualCost);
