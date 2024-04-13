@@ -874,7 +874,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1103170048
 MonoBehaviour:
@@ -912,7 +912,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea851b19db43ef4dacc3b4a999cd422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _GroundTile: {fileID: 8978051140936515203, guid: bf449047f1745fc458daca1dffbe8b9c, type: 3}
+  _GroundTile: {fileID: 8978051140936515203, guid: 1550b61b69cc6024fb7530f2eab4f1ec, type: 3}
   _GroundTileLeft: {fileID: 5993111466514961308, guid: 33c36a69a64e5e7408f13e4acb64888f, type: 3}
   _GroundTileRight: {fileID: 6317809731613480332, guid: ad586742f1ab74541b8391cb9293642c, type: 3}
   _TJunctionTile: {fileID: 6285156456692458652, guid: 4d4c11ea012dc7048b70b9a63426f778, type: 3}

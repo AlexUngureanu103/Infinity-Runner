@@ -28,8 +28,13 @@ public class UpgradeItem : MonoBehaviour
 
 	void Start()
 	{
+#if UNITY_EDITOR
+		coins = 10000;
+		PlayerPrefs.SetFloat("Coins", 10000);
 		coins = PlayerPrefs.GetFloat("Coins", 10000);
-
+#else
+	coins = PlayerPrefs.GetFloat("Coins", 0);
+#endif
 
 
 		if (string.IsNullOrEmpty(_UpgradeName))
