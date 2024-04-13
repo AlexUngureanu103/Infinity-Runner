@@ -2,24 +2,23 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    private PlayerMovement _PlayerMovement;
+	private PlayerMovement _PlayerMovement;
 
-    void Start()
-    {
-        _PlayerMovement = GameObject.FindObjectOfType<PlayerMovement>();
-    }
+	void Start()
+	{
+		_PlayerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+	}
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            _PlayerMovement.Die();
-        }
-    }
+	private void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Player"))
+		{
+			_PlayerMovement.Die();
+		}
+	}
 
+	void Update()
+	{
 
-    void Update()
-    {
-
-    }
+	}
 }

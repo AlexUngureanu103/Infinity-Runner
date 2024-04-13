@@ -25,7 +25,8 @@ public class Anim_Movement : MonoBehaviour
 	private AnimatorController _WalkAnimation;
 	[SerializeField]
 	private AnimatorController _SprintAnimation;
-
+	[SerializeField]
+	private ParticleSystem _ParticleSystem;
 	private Animator animator;
 
 	private float _CurrentForwardSpeed = 5.0f;
@@ -40,15 +41,15 @@ public class Anim_Movement : MonoBehaviour
 
 	private bool isDisabledTrigger = false;
 
-    private bool canRotate = true;
-    private float currentYRotation = 0;
+	private bool canRotate = true;
+	private float currentYRotation = 0;
 
-    private void FixedUpdate()
-    {
-        if (!_isAlive)
-        {
-            return;
-        }
+	private void FixedUpdate()
+	{
+		if (!_isAlive)
+		{
+			return;
+		}
 
 		_CurrentForwardSpeed = Math.Min(Mathf.Lerp(_CurrentForwardSpeed, targetForwardSpeed, Time.deltaTime), playerStats.MaxSpeed);
 		_CurrentForwardSpeed = Math.Max(_CurrentForwardSpeed, minForwardSpeed);
@@ -68,39 +69,39 @@ public class Anim_Movement : MonoBehaviour
 		extraJumps = playerStats.ExtraJumps;
 	}
 
-    void Update()
-    {
-        if (!_isAlive)
-        {
-            return;
-        }
+	void Update()
+	{
+		if (!_isAlive)
+		{
+			return;
+		}
 
-        if (isJumping)
-        {
-            _PlayerCollider.contactOffset = 0.5f;
-        }
-        else
-        {
-            _PlayerCollider.contactOffset = 0.01f;
-        }
+		if (isJumping)
+		{
+			_PlayerCollider.contactOffset = 0.5f;
+		}
+		else
+		{
+			_PlayerCollider.contactOffset = 0.01f;
+		}
 
-        _HorizontalInput = Input.GetAxis("Horizontal");
-        float _VerticalInput = Input.GetAxis("Vertical");
-        if (canRotate)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                currentYRotation -= 90;
-                canRotate = false;
-                Invoke("ChangePlayerRotation", 1f);
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                canRotate = false;
-                currentYRotation += 90;
-                Invoke("ChangePlayerRotation", 1f);
-            }
-        }
+		_HorizontalInput = Input.GetAxis("Horizontal");
+		float _VerticalInput = Input.GetAxis("Vertical");
+		if (canRotate)
+		{
+			if (Input.GetKeyDown(KeyCode.Q))
+			{
+				currentYRotation -= 90;
+				canRotate = false;
+				Invoke("ChangePlayerRotation", 1f);
+			}
+			if (Input.GetKeyDown(KeyCode.E))
+			{
+				canRotate = false;
+				currentYRotation += 90;
+				Invoke("ChangePlayerRotation", 1f);
+			}
+		}
 
 		if (_VerticalInput > 0)
 		{
@@ -117,12 +118,16 @@ public class Anim_Movement : MonoBehaviour
 
 		if (isJumping && extraJumps > 0 && Input.GetKeyDown(KeyCode.Space))
 		{
+			GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayJumpSound();
+			_ParticleSystem.Pause();
 			_Rb.isKinematic = false;
 			_Rb.velocity = Vector2.up * playerStats.JumpForce;
 			extraJumps--;
 		}
 		else if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
 		{
+			GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayJumpSound();
+			_ParticleSystem.Pause();
 			isJumping = true;
 			_Rb.isKinematic = false;
 			_Rb.velocity = Vector2.up * playerStats.JumpForce;
@@ -132,6 +137,8 @@ public class Anim_Movement : MonoBehaviour
 
 		if (transform.position.y < -10)
 		{
+			_ParticleSystem.Pause();
+			GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayDeathSound();
 			Die();
 		}
 	}
@@ -177,10 +184,12 @@ public class Anim_Movement : MonoBehaviour
 		}
 		else if (_CurrentForwardSpeed < 5)
 		{
+			_ParticleSystem.Play();
 			animator.runtimeAnimatorController = _WalkAnimation;
 		}
 		else if (_CurrentForwardSpeed < 10)
 		{
+			_ParticleSystem.Play();
 			animator.runtimeAnimatorController = _RunAnimation;
 		}
 		else if (_CurrentForwardSpeed < 15)
@@ -199,6 +208,7 @@ public class Anim_Movement : MonoBehaviour
 
 	public void Die()
 	{
+
 		_CurrentForwardSpeed = 0;
 		targetForwardSpeed = 0;
 
@@ -207,18 +217,18 @@ public class Anim_Movement : MonoBehaviour
 		Invoke("Restart", 2);
 	}
 
-    void ChangePlayerRotation()
-    {
-        if (currentYRotation == 360 || currentYRotation == -360)
-        {
-            currentYRotation = 0;
-        }
-        transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
-        canRotate = true;
-    }
+	void ChangePlayerRotation()
+	{
+		if (currentYRotation == 360 || currentYRotation == -360)
+		{
+			currentYRotation = 0;
+		}
+		transform.rotation = Quaternion.Euler(0, currentYRotation, 0);
+		canRotate = true;
+	}
 
-    void Restart()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+	void Restart()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
 }

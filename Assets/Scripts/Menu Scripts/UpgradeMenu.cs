@@ -24,6 +24,7 @@ public class UpgradeMenu : MonoBehaviour
 
 	public void ResetUpgrades()
 	{
+		GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayMenuSound();
 		PlayerPrefs.SetInt("EJ", 0);
 		PlayerPrefs.SetInt("JF", 0);
 		PlayerPrefs.SetInt("AS", 0);

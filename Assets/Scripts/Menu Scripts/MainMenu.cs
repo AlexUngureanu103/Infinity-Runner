@@ -3,44 +3,49 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField]
-    private Button _UpgradeButton;
-    [SerializeField]
-    private Button _OptionsButton;
-    [SerializeField]
-    private Button _PlayButton;
-    [SerializeField]
-    private Button _ExitButton;
+	[SerializeField]
+	private Button _UpgradeButton;
+	[SerializeField]
+	private Button _OptionsButton;
+	[SerializeField]
+	private Button _PlayButton;
+	[SerializeField]
+	private Button _ExitButton;
 
-    void Start()
-    {
-        _ExitButton.onClick.AddListener(ExitGame);
-        _PlayButton.onClick.AddListener(PlayGame);
-        _OptionsButton.onClick.AddListener(ToOptions);
-        _UpgradeButton.onClick.AddListener(ToUpgrades);
-    }
+	void Start()
+	{
+		_ExitButton.onClick.AddListener(ExitGame);
+		_PlayButton.onClick.AddListener(PlayGame);
+		_OptionsButton.onClick.AddListener(ToOptions);
+		_UpgradeButton.onClick.AddListener(ToUpgrades);
+	}
 
-    public void ExitGame()
-    {
+	public void ExitGame()
+	{
+		GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayMenuSound();
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
+		UnityEditor.EditorApplication.isPlaying = false;
 #else
         Application.Quit();
 #endif
-    }
+	}
 
-    public void PlayGame()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-    }
+	public void PlayGame()
+	{
+		GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayMenuSound();
 
-    public void ToOptions()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(3);
-    }
+		UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+	}
 
-    public void ToUpgrades()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
-    }
+	public void ToOptions()
+	{
+		GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayMenuSound();
+		UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+	}
+
+	public void ToUpgrades()
+	{
+		GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayMenuSound();
+		UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+	}
 }
