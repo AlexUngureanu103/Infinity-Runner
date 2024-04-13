@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 7968259933795041823, guid: a3c912d09d8331b4aa6a35adb3231f6e, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.07687465
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

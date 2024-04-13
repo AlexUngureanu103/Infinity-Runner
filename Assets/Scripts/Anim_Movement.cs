@@ -149,7 +149,16 @@ public class Anim_Movement : MonoBehaviour
 		isDisabledTrigger = false;
 	}
 
-	private void OnTriggerEnter(Collider collision)
+	void OnCollisionExit(Collision collision)
+	{
+		_Rb.isKinematic = false;
+	}
+
+	private void OnTriggerExit(Collider collision)
+	{
+	}
+
+	void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("Ground"))
 		{
@@ -166,13 +175,6 @@ public class Anim_Movement : MonoBehaviour
 			animator.runtimeAnimatorController = _IdleAnimation;
 			Die();
 		}
-	}
-	private void OnTriggerExit(Collider collision)
-	{
-		_Rb.isKinematic = false;
-	}
-	void OnCollisionEnter(Collision collision)
-	{
 		Debug.Log("Collided with: " + collision.gameObject.name);
 	}
 
