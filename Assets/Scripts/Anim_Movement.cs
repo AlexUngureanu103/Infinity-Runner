@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using UnityEditor.Animations;
+//using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,18 +13,18 @@ public class Anim_Movement : MonoBehaviour
     [SerializeField]
     private Collider _PlayerCollider;
 
-    [SerializeField]
-    private AnimatorController _JumpAnimation;
-    [SerializeField]
-    private AnimatorController _RunAnimation;
-    [SerializeField]
-    private AnimatorController _IdleAnimation;
-    [SerializeField]
-    private AnimatorController _FallAnimation;
-    [SerializeField]
-    private AnimatorController _WalkAnimation;
-    [SerializeField]
-    private AnimatorController _SprintAnimation;
+    //[SerializeField]
+    //private AnimatorController _JumpAnimation;
+    //[SerializeField]
+    //private AnimatorController _RunAnimation;
+    //[SerializeField]
+    //private AnimatorController _IdleAnimation;
+    //[SerializeField]
+    //private AnimatorController _FallAnimation;
+    //[SerializeField]
+    //private AnimatorController _WalkAnimation;
+    //[SerializeField]
+    //private AnimatorController _SprintAnimation;
     [SerializeField]
     private ParticleSystem _ParticleSystem;
     private Animator animator;
@@ -172,7 +172,7 @@ public class Anim_Movement : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            animator.runtimeAnimatorController = _IdleAnimation;
+            //animator.runtimeAnimatorController = _IdleAnimation;
             Die();
         }
         //Debug.Log("Collided with: " + collision.gameObject.name);
@@ -180,32 +180,32 @@ public class Anim_Movement : MonoBehaviour
 
     private void SetWalkAnimationController()
     {
-        if (isJumping)
-        {
-            animator.runtimeAnimatorController = _JumpAnimation;
-        }
-        else if (_CurrentForwardSpeed < 5)
-        {
-            _ParticleSystem.Play();
-            animator.runtimeAnimatorController = _WalkAnimation;
-        }
-        else if (_CurrentForwardSpeed < 10)
-        {
-            _ParticleSystem.Play();
-            animator.runtimeAnimatorController = _RunAnimation;
-        }
-        else if (_CurrentForwardSpeed < 15)
-        {
-            animator.runtimeAnimatorController = _SprintAnimation;
-        }
-        else
-        {
-            animator.runtimeAnimatorController = _IdleAnimation;
-        }
-        if (transform.position.y < 0)
-        {
-            animator.runtimeAnimatorController = _FallAnimation;
-        }
+        //if (isJumping)
+        //{
+        //    animator.runtimeAnimatorController = _JumpAnimation;
+        //}
+        //else if (_CurrentForwardSpeed < 5)
+        //{
+        //    _ParticleSystem.Play();
+        //    animator.runtimeAnimatorController = _WalkAnimation;
+        //}
+        //else if (_CurrentForwardSpeed < 10)
+        //{
+        //    _ParticleSystem.Play();
+        //    animator.runtimeAnimatorController = _RunAnimation;
+        //}
+        //else if (_CurrentForwardSpeed < 15)
+        //{
+        //    animator.runtimeAnimatorController = _SprintAnimation;
+        //}
+        //else
+        //{
+        //    animator.runtimeAnimatorController = _IdleAnimation;
+        //}
+        //if (transform.position.y < 0)
+        //{
+        //    animator.runtimeAnimatorController = _FallAnimation;
+        //}
     }
 
     public void Die()
