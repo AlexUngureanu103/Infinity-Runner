@@ -55,14 +55,12 @@ public class GroundSpawner : MonoBehaviour
     private bool SpawnTJunction()
     {
         isJunctionGeneration = true;
-        tJunctionTile = Instantiate(_GroundTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation, 0));
-        nextSpawnPoint = tJunctionTile.transform.GetChild(3).transform.position;
 
-        tJunctionTile = Instantiate(_GroundTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation, 0));
-        nextSpawnPoint = tJunctionTile.transform.GetChild(3).transform.position;
-
-        tJunctionTile = Instantiate(_GroundTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation, 0));
-        nextSpawnPoint = tJunctionTile.transform.GetChild(3).transform.position;
+        for (int i = 0; i < 5; i++)
+        {
+            tJunctionTile = Instantiate(_GroundTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation, 0));
+            nextSpawnPoint = tJunctionTile.transform.GetChild(3).transform.position;
+        }
 
         tJunctionTile = Instantiate(_TJunctionTile, nextSpawnPoint, Quaternion.Euler(0, currentYRotation, 0));
         nextSpawnPoint = tJunctionTile.transform.GetChild(3).transform.position;

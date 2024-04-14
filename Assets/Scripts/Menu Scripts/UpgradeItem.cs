@@ -89,7 +89,7 @@ public class UpgradeItem : MonoBehaviour
 		}
 		else
 		{
-			Debug.Log("Not enough coins");
+			//Debug.Log("Not enough coins");
 		}
 	}
 

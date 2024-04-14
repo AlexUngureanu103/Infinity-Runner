@@ -175,7 +175,7 @@ public class Anim_Movement : MonoBehaviour
             animator.runtimeAnimatorController = _IdleAnimation;
             Die();
         }
-        Debug.Log("Collided with: " + collision.gameObject.name);
+        //Debug.Log("Collided with: " + collision.gameObject.name);
     }
 
     private void SetWalkAnimationController()
