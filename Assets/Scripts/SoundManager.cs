@@ -20,6 +20,16 @@ public class SoundManager : MonoBehaviour
 	[SerializeField]
 	private AudioClip _UpgradeSound;
 
+	public void SetMusicVolume(float volume)
+	{
+		_AudioSource.volume = volume;
+	}
+
+	public void SetSFXVolume(float volume)
+	{
+		_SFXSource.volume = volume;
+	}
+
 	public void PlayCoinCollectSound()
 	{
 		_SFXSource.clip = _CoinCollectSound;
