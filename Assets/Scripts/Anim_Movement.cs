@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,18 +12,6 @@ public class Anim_Movement : MonoBehaviour
     [SerializeField]
     private Collider _PlayerCollider;
 
-    [SerializeField]
-    private AnimatorController _JumpAnimation;
-    [SerializeField]
-    private AnimatorController _RunAnimation;
-    [SerializeField]
-    private AnimatorController _IdleAnimation;
-    [SerializeField]
-    private AnimatorController _FallAnimation;
-    [SerializeField]
-    private AnimatorController _WalkAnimation;
-    [SerializeField]
-    private AnimatorController _SprintAnimation;
     [SerializeField]
     private ParticleSystem _ParticleSystem;
     private Animator animator;
@@ -56,7 +43,12 @@ public class Anim_Movement : MonoBehaviour
         Vector3 forwardMove = transform.forward * _CurrentForwardSpeed * Time.deltaTime;
         Vector3 horizontalMove = transform.right * _HorizontalInput * _CurrentForwardSpeed * Time.deltaTime;
 
-        SetWalkAnimationController();
+        animator.SetFloat("Speed", _CurrentForwardSpeed);
+
+        if (transform.position.y < -1)
+        {
+            animator.SetBool("IsFalling", true);
+        }
 
         _Rb.MovePosition(_Rb.position + forwardMove + horizontalMove);
     }
@@ -129,6 +121,7 @@ public class Anim_Movement : MonoBehaviour
             GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayJumpSound();
             _ParticleSystem.Pause();
             isJumping = true;
+            animator.SetBool("IsJumping", true);
             _Rb.isKinematic = false;
             _Rb.velocity = Vector2.up * playerStats.JumpForce;
             isDisabledTrigger = true;
@@ -167,50 +160,19 @@ public class Anim_Movement : MonoBehaviour
                 return;
             }
             isJumping = false;
+            animator.SetBool("IsJumping", false);
             Invoke("SetWalkAnimationController", 0.2f);
             _Rb.isKinematic = true;
         }
         else if (collision.gameObject.CompareTag("Obstacle"))
         {
-            animator.runtimeAnimatorController = _IdleAnimation;
             Die();
-        }
-        //Debug.Log("Collided with: " + collision.gameObject.name);
-    }
-
-    private void SetWalkAnimationController()
-    {
-        if (isJumping)
-        {
-            animator.runtimeAnimatorController = _JumpAnimation;
-        }
-        else if (_CurrentForwardSpeed < 5)
-        {
-            _ParticleSystem.Play();
-            animator.runtimeAnimatorController = _WalkAnimation;
-        }
-        else if (_CurrentForwardSpeed < 10)
-        {
-            _ParticleSystem.Play();
-            animator.runtimeAnimatorController = _RunAnimation;
-        }
-        else if (_CurrentForwardSpeed < 15)
-        {
-            animator.runtimeAnimatorController = _SprintAnimation;
-        }
-        else
-        {
-            animator.runtimeAnimatorController = _IdleAnimation;
-        }
-        if (transform.position.y < 0)
-        {
-            animator.runtimeAnimatorController = _FallAnimation;
         }
     }
 
     public void Die()
     {
-
+        animator.SetBool("HasHitAnObstacle", true);
         _CurrentForwardSpeed = 0;
         targetForwardSpeed = 0;
 
