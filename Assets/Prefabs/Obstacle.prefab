@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4259381189681538478}
   - component: {fileID: 7807724617528168610}
   - component: {fileID: 8284241650042723718}
-  - component: {fileID: 2939030174328884772}
   - component: {fileID: 4957284287656881326}
   m_Layer: 0
   m_Name: Obstacle
@@ -29,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3280457718575129119}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.026}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 3.3333333, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -86,27 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2939030174328884772
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3280457718575129119}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1.1, y: 0.85, z: 1}
-  m_Center: {x: 0.13, y: 0, z: 0}
 --- !u!114 &4957284287656881326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,9 +109,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_5
       objectReference: {fileID: 0}
+    - target: {fileID: 1371598241635088, guid: 3a33ce58c20826a4ea7253f84444654b, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4025704486191332, guid: 3a33ce58c20826a4ea7253f84444654b, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.45
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4025704486191332, guid: 3a33ce58c20826a4ea7253f84444654b, type: 3}
       propertyPath: m_LocalScale.y
@@ -183,6 +165,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 33756338274066834, guid: 3a33ce58c20826a4ea7253f84444654b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: dfed2e9fb3d8ac84da441095f9422543, type: 3}
+    - target: {fileID: 64105460355341304, guid: 3a33ce58c20826a4ea7253f84444654b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: dfed2e9fb3d8ac84da441095f9422543, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
