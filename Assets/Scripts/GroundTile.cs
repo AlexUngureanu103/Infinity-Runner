@@ -70,10 +70,10 @@ public class GroundTile : MonoBehaviour
         int obstacleSpawnIndex = Random.Range(0, 3);
         Transform spawnPoint = transform.GetChild(obstacleSpawnIndex).transform;
 
-        if (!GetComponent<Collider>().bounds.Contains(spawnPoint.position))
-        {
-            return;
-        }
+        //if (!GetComponent<Collider>().bounds.Contains(spawnPoint.position))
+        //{
+        //    return;
+        //}
 
         Instantiate(obstacleToSpawn, spawnPoint.position, transform.rotation, transform);
     }

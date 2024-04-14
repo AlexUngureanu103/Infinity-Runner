@@ -155,7 +155,7 @@ public class Anim_Movement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (isDisabledTrigger)
+              if (isDisabledTrigger)
             {
                 return;
             }
