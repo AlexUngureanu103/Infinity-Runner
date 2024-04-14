@@ -128,7 +128,7 @@ public class Anim_Movement : MonoBehaviour
             StartCoroutine(EnableTriggerAfterDelay(0.5f));
         }
 
-        if (transform.position.y < -10)
+        if (transform.position.y < -5)
         {
             _ParticleSystem.Pause();
             Die();
@@ -183,7 +183,7 @@ public class Anim_Movement : MonoBehaviour
 
         _isAlive = false;
 
-        Invoke("Restart", 2);
+        Invoke("Restart", 1);
     }
 
     void ChangePlayerRotation()
