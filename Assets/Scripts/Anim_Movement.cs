@@ -131,7 +131,6 @@ public class Anim_Movement : MonoBehaviour
         if (transform.position.y < -10)
         {
             _ParticleSystem.Pause();
-            GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayDeathSound();
             Die();
         }
     }
@@ -172,6 +171,12 @@ public class Anim_Movement : MonoBehaviour
 
     public void Die()
     {
+        if(!_isAlive)
+        {
+            return;
+        }
+
+        GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayDeathSound();
         animator.SetBool("HasHitAnObstacle", true);
         _CurrentForwardSpeed = 0;
         targetForwardSpeed = 0;

@@ -65,6 +65,7 @@ public class UpgradeMenu : MonoBehaviour
 
 	public void BackToMainMenu()
 	{
+		GameObject.FindGameObjectsWithTag("Audio")[0].GetComponent<SoundManager>().PlayMenuSound();
 		UnityEngine.SceneManagement.SceneManager.LoadScene(0);
 	}
 }
